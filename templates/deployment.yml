@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Release.Name }}-container
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            limits:
+              memory: {{ .Values.resources.limits.memory }}
+              cpu: {{ .Values.resources.limits.cpu }}
+          env:
+          - name: ortam
+            value: {{ .Values.image.env.ortam }}
+          - name: env
+            value: {{ .Values.image.env.env }}
+          - name: ETCD_NAMESPACE
+            value: {{ .Values.image.env.ETCD_NAMESPACE }}
+          - name: ETCD_ENDPOINT
+            value: {{ .Values.image.env.ETCD_ENDPOINT }}
+          readinessProbe:
+            tcpSocket:
+              port: {{ .Values.image.ports.port }}
+            initialDelaySeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 6
+            periodSeconds: 5
+            successThreshold: 6
+          ports:
+            - containerPort: {{ .Values.image.ports.port }}
+              name: app-port
+              protocol: TCP
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecrets }}
