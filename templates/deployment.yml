@@ -34,11 +34,11 @@ spec:
           readinessProbe:
             tcpSocket:
               port: {{ .Values.image.ports.port }}
-            initialDelaySeconds: 20
+            initialDelaySeconds: 40
             timeoutSeconds: 5
-            failureThreshold: 6
+            failureThreshold: 1
             periodSeconds: 5
-            successThreshold: 6
+            successThreshold: 1
           ports:
             - containerPort: {{ .Values.image.ports.port }}
               name: app-port

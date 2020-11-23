@@ -9,7 +9,7 @@ image:
   repository: hub.epias.com.tr/vep/vep-master
   pullPolicy: Always
   # Overrides the image tag whose default is the chart version.
-  tag: 0.6.15
+  tag: 1.1.0
   env:
     ortam: dev
     env: prod
@@ -53,7 +53,7 @@ service:
   type: ClusterIP
   port: 8080
   targetPort: 8080
-  nodePort: 30500
+  #nodePort: 30500
 
 resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -63,9 +63,9 @@ resources:
    limits:
      cpu: 1
      memory: 2048Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+   requests:
+     cpu: 100m
+     memory: 256Mi
 
 autoscaling:
   enabled: false
