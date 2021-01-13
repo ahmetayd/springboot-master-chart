@@ -86,3 +86,21 @@ secret:
 ingress:
   host: ""
   path: ""
+
+# Readiness probe
+readinessProbe:
+  path: /actuator/health/readiness
+  initialDelaySeconds: 40
+  timeoutSeconds: 5
+  failureThreshold: 1
+  periodSeconds: 5
+  successThreshold: 1
+
+# Liveness probe
+livenessProbe:
+  path: /actuator/health/liveness
+  initialDelaySeconds: 40
+  timeoutSeconds: 5
+  failureThreshold: 1
+  periodSeconds: 5
+  successThreshold: 1
