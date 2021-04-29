@@ -12,7 +12,7 @@ helm upgrade  -i example-service ./ -n example-namespace --set ingress.path=exam
 
 #Environments
 
-image.env.ortam             environment for application branch specific configs
-image.env.ETCD_ENDPOINT     ETCD uri for spring boot config backend
-image.env.ETCD_NAMESPACE    ETCD tree path for app configs
+image.env.ortam             environment for application branch specific configs \
+image.env.ETCD_ENDPOINT     ETCD uri for spring boot config backend \
+image.env.ETCD_NAMESPACE    ETCD tree path for app configs \
 secret.enabled              if true, you can use username password secret for docker image repository
