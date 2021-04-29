@@ -12,7 +12,6 @@ image:
   tag: 1.1.0
   env:
     ortam: dev
-    env: prod
     ETCD_NAMESPACE: /master/service
     ETCD_ENDPOINT: http://etcd.example.com:2379
   

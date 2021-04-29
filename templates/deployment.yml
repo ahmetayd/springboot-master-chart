@@ -28,8 +28,6 @@ spec:
           env:
           - name: ortam
             value: {{ .Values.image.env.ortam }}
-          - name: env
-            value: {{ .Values.image.env.env }}
           - name: ETCD_NAMESPACE
             value: {{ .Values.image.env.ETCD_NAMESPACE }}
           - name: ETCD_ENDPOINT
