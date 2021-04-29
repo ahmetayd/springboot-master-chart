@@ -1,6 +1,6 @@
 apiVersion: v2
-name: master-chart
-description: A Helm chart for application
+name: springboot-master-chart
+description: A Helm chart for SpringBoot
 
 # A chart can be either an 'application' or a 'library' chart.
 #
