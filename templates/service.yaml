@@ -12,5 +12,9 @@ spec:
       {{- end }}      
       protocol: TCP
       name: http
+    - port: 5701
+      targetPort: 5701    
+      protocol: TCP
+      name: hazelcast
   selector:
     app: {{ .Release.Name }}

@@ -6,15 +6,15 @@ replicaCount: 3
 
 
 image:
-  repository: hub.epias.com.tr/vep/vep-master
+  repository: hub.docker.com/example/master
   pullPolicy: Always
   # Overrides the image tag whose default is the chart version.
   tag: 1.1.0
   env:
     ortam: dev
     env: prod
-    ETCD_NAMESPACE: /efm/vep-master
-    ETCD_ENDPOINT: http://etcd-master.epias.com.tr:2379
+    ETCD_NAMESPACE: /master/service
+    ETCD_ENDPOINT: http://etcd.example.com:2379
   
   ports:
     port: 8080
@@ -23,8 +23,8 @@ image:
 imagePullSecrets: reg-secret
 
 imageCredentials:
-  registry: hub.epias.com.tr
-  username: sjenkins
+  registry: hub.docker.com
+  username: username
   password: 
   
 serviceAccount:
